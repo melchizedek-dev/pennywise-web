@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Roboto, Poppins } from "next/font/google";
+import { Inter, Roboto, Poppins, Geist } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -32,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${roboto.variable} ${poppins.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", inter.variable, roboto.variable, poppins.variable, "font-sans", geist.variable)}
     >
       <body className="min-h-full bg-neutral-200">{children}</body>
     </html>

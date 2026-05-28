@@ -1,105 +1,112 @@
-"use client";
-import { ArrowRight } from "lucide-react";
-import { showToast } from "nextjs-toast-notify";
-export default function SignupPage() {
- const handleClick = () => {
-    showToast.error("Operation complete! 🎉", {
-      duration: 4000, // 4 seconds
-      position: "top-right",
-      transition: "bounceIn",
-      sound: true,
-      progress: true
-    });
-  };
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+  FieldSeparator,
+} from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+
+export default function SignupForm() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-neutral-100">
-      <div className="min-w-300 border-neutral-200 bg-neutral-200 flex flex-row rounded-md shadow-lg overflow-hidden w-full max-w-4xl">
+    <div className="flex min-h-svh flex-col items-center justify-center bg-muted p-6 md:p-10">
+      <div className="w-full max-w-sm md:max-w-4xl">
 
-        <div className="min-h-full bg-primary flex flex-col items-center justify-center flex-1 p-10 rounded-r-md">
-          <div className="">
-            <h1 className="text-2xl font-bold text-white mb-4">PennyWise</h1>
-            <p className="text-gray-300 text-md">Experience the next generation of personal finance.</p>
-            <p className="text-gray-300 text-md">Secure, intuitive, and designed for your growth.</p>
-            <div className="mt-6 overflow-hidden rounded-md h-80 w-full">
-              <img className="w-full object-cover" src="/dashboard-alaysis.png"/>
-            </div>
-          </div>
-        </div>
+        <div className="flex flex-col gap-6">
+          <Card className="overflow-hidden p-0">
+            <CardContent className="grid p-0 md:grid-cols-2">
+              <form className="p-6 md:p-8">
 
-        <div className="min-h-full bg-neutral-200 flex flex-col items-center justify-center flex-1 p-10">
-          <div className="w-full flex flex-col max-w-sm">
-            <h2 className="text-2xl font-bold mb-4 ">Create Your Account</h2>
-            <p className="mb-4 text-md ">Start your journey to financial freedom today.</p>
-          </div>
+                <FieldGroup>
+                  <div className="flex flex-col items-center gap-2 text-center">
+                    <h1 className="text-2xl font-bold">Create your account</h1>
+                    <p className="text-sm text-balance text-muted-foreground">
+                      Start your journey to financial freedom with us. Create your account and take control of your finances today!
+                    </p>
+                  </div>
 
-          <form className="w-full max-w-sm">
-            
-            <div className="mb-4">
-              <label className="block text-secondary text-sm font-bold mb-2" htmlFor="fullName">
-                Full Name
-              </label>
-              <input
-                className="border border-neutral-300 bg-white rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="fullName"
-                type="text"
-                placeholder="Full Name"
-              />
-            </div>
+                  <Field>
+                    <FieldLabel htmlFor="name">Full Name</FieldLabel>
+                    <Input
+                      id="name"
+                      type="text"
+                      placeholder="John Doe"
+                      required
+                    />
+                    
+                  </Field>
 
-            <div className="mb-4">
-              <label className="block text-secondary text-sm font-bold mb-2" htmlFor="email">
-                Email Address
-              </label>
-              <input
-                className="border border-neutral-300 bg-white rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="email"
-                type="email"
-                placeholder="Email Address"
-              />
-            </div>
+                  <Field>
+                    <FieldLabel htmlFor="email">Email</FieldLabel>
+                    <Input
+                    className="p-5"
+                      id="email"
+                      type="email"
+                      placeholder="m@example.com"
+                      required
+                    />
+                    
+                  </Field>
 
-            <div className="mb-4">
-              <label className="block text-secondary text-sm font-bold mb-2" htmlFor="pasword">
-                Password
-              </label>
-              <input
-                className="border border-neutral-300 bg-white rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="password"
-                type="password"
-                placeholder="Password"
-              />
+                  <Field>
+                    <FieldLabel htmlFor="password">Password</FieldLabel>
+                    <Input
+                    className="p-5"
+                      id="password"
+                      type="password"
+                      placeholder="••••••••"
+                      required
+                    />
+                    
+                  </Field>
+                  
+                  <Field>
+                    <Button type="submit" className="p-5">Create Account</Button>
+                  </Field>
+                  
+                  <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
+                    Or continue with
+                  </FieldSeparator>
 
-            </div>
+                  <Field>
+                    <Button variant="outline" type="button">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                          d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      <span className="sr-only">Sign up with Google</span>
+                    </Button>
+                  </Field>
+                  
+                  <FieldDescription className="text-center">
+                    Already have an account? <a href="/auth/login">Sign in</a>
+                  </FieldDescription>
+                </FieldGroup>
 
-            <div className="mb-4 flex items-center justify-start ">
-              <input type="checkbox" id="terms" className="mr-2 leading-tight" required/>
-              <p className="text-sm text-gray-600">
-                I agree to the <a href="#" className="text-primary hover:underline">Terms of Service</a> and <a href="#" className="text-primary hover:underline">Privacy Policy</a>.
-              </p>
-            </div>
+              </form>
 
-            <div className="flex items-center justify-center mb-7">
-              <button
-                onClick={handleClick}
-                className="w-full text-md bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex flex-row items-center justify-center gap-3"
-                type="submit"
-              >
-                Create Account
-                 <ArrowRight size={20} />
-              </button>
-            </div>
+              <div className="relative hidden bg-muted md:block">
+                <img
+                  src="/dashboard-analysis.png"
+                  alt="Image"
+                  className="absolute inset-0 h-full w-full object-cover "
+                />
+              </div>
+            </CardContent>
+          </Card>
 
-            <div className="mb-4">
-              <p className="text-sm text-gray-600 text-center">
-                Already have an account? <a href="/auth/login" className="text-primary hover:underline">Sign In</a>.
-              </p>
-            </div>
-            
-          </form>
+          <FieldDescription className="px-6 text-center">
+            By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
+            and <a href="#">Privacy Policy</a>.
+          </FieldDescription>
 
         </div>
 
       </div>
-    </main>
-  );
+    </div>
+  )
 }
