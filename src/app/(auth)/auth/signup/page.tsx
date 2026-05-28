@@ -8,6 +8,8 @@ import {
   FieldSeparator,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import Image from "next/image"
+import Link from "next/link"
 
 export default function SignupForm() {
   return (
@@ -41,7 +43,7 @@ export default function SignupForm() {
                   <Field>
                     <FieldLabel htmlFor="email">Email</FieldLabel>
                     <Input
-                    className="p-5"
+                      className="p-5"
                       id="email"
                       type="email"
                       placeholder="m@example.com"
@@ -83,19 +85,70 @@ export default function SignupForm() {
                   </Field>
                   
                   <FieldDescription className="text-center">
-                    Already have an account? <a href="/auth/login">Sign in</a>
+                    Already have an account? <Link href="/auth/login">Sign in</Link>
                   </FieldDescription>
                 </FieldGroup>
 
               </form>
 
-              <div className="relative hidden bg-muted md:block">
-                <img
+              <div className="relative hidden md:block">
+                {/* Background Image */}
+                <Image
                   src="/dashboard-analysis.png"
-                  alt="Image"
-                  className="absolute inset-0 h-full w-full object-cover "
+                  alt="Dashboard Analysis"
+                  fill
+                  priority
+                  className="object-cover"
                 />
+
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-black/60" />
+
+                {/* Center Content */}
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    z-10
+                    flex
+                    flex-col
+                    items-center
+                    justify-center
+                    px-10
+                    text-center
+                    text-white
+                  "
+                >
+                  <h2
+                    className="
+                      max-w-3xl
+                      text-2xl
+                      font-bold
+                      leading-tight
+                      lg:text-3xl
+                    "
+                  >
+                    Experience the future of personal wealth
+                    management
+                  </h2>
+
+                  <p
+                    className="
+                      mt-6
+                      max-w-2xl
+                      text-base
+                      leading-7
+                      text-white/80
+                      lg:text-2
+                    "
+                  >
+                    Join over 50,000 users who trust Pennywise for
+                    their daily financial clarity and investment
+                    growth.
+                  </p>
+                </div>
               </div>
+
             </CardContent>
           </Card>
 

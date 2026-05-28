@@ -1,14 +1,14 @@
 import { AuthProvider } from '@/context/AuthContext'
 import React from 'react'
 
-const AuthLayout = ({children}:{children:React.ReactNode}) => {
+const WelcomeLayout = ({children}:{children:React.ReactNode}) => {
   return (
     <AuthProvider>
-      <div className="min-h-screen">
+      <div>
         {children}
       </div>
     </AuthProvider>
   )
 }
 
-export default AuthLayout
+export default WelcomeLayout
